@@ -44,6 +44,10 @@ window#waybar {
     color: black;
 }
 
+#clock {
+  color: #2DFCF5;
+}
+
 
 #clock,
 #battery,
