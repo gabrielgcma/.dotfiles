@@ -3,29 +3,30 @@
  * Rofi version: 1.7.5
  **/
 * {
+    blue-background-transparent: rgba ( 4, 12, 31, 75 % );
+    blue-selection-bg:           rgba ( 39, 69, 115, 100 % );
     red:                         rgba ( 220, 50, 47, 100 % );
     selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
     lightfg:                     rgba ( 88, 104, 117, 100 % );
-    separatorcolor:              rgba ( 29, 31, 33, 100 % );
+    separatorcolor:              rgba ( 200, 200, 200, 100 % );
     urgent-foreground:           rgba ( 204, 102, 102, 100 % );
     alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     background-color:            transparent;
     border-color:                rgba ( 124, 131, 137, 100 % );
-    normal-background:           var(background);
+    normal-background:           var(blue-background-transparent);
     selected-urgent-background:  rgba ( 165, 66, 66, 100 % );
     alternate-active-background: rgba ( 75, 81, 96, 89 % );
     spacing:                     2;
     alternate-normal-foreground: var(foreground);
-    blue:                        rgba ( 38, 139, 210, 100 % );
+    blue:                        rgba ( 0, 19, 72, 100 % );
     urgent-background:           rgba ( 29, 31, 33, 17 % );
     selected-normal-foreground:  rgba ( 249, 249, 249, 100 % );
-    active-foreground:           rgba ( 101, 172, 255, 100 % );
-    background:                  rgba ( 45, 48, 59, 95 % );
-    selected-normal-background:  rgba ( 64, 132, 214, 100 % );
-    selected-active-background:  rgba ( 68, 145, 237, 100 % );
-    active-background:           rgba ( 29, 31, 33, 17 % );
-    alternate-normal-background: rgba ( 64, 69, 82, 59 % );
+    active-foreground:           rgba ( 0, 4, 31, 100 % );
+    selected-normal-background:  var(blue-selection-bg);
+    selected-active-background:  rgba ( 0, 19, 72, 100 % );
+    active-background:           rgba ( 0, 0, 0, 17 % );
+    alternate-normal-background: rgba ( 0, 0, 0, 20 % );
     foreground:                  rgba ( 196, 203, 212, 100 % );
     selected-urgent-foreground:  rgba ( 249, 249, 249, 100 % );
     alternate-urgent-foreground: var(urgent-foreground);
@@ -33,9 +34,10 @@
     alternate-active-foreground: var(active-foreground);
 }
 window {
-    padding:          5;
-    background-color: var(background);
+    padding:          10;
+    background-color: var(blue-background-transparent);
     border:           1;
+    border-radius:    5;
 }
 mainbox {
     padding: 0;
@@ -55,14 +57,16 @@ listview {
     border-color: var(separatorcolor);
     spacing:      2px ;
     fixed-height: 0;
-    border:       2px 0px 0px ;
+    border:       0px 0px 0px ;
 }
 element {
-    padding: 1px ;
+    padding: 4px ;
     border:  0;
+    border-radius: 4;
 }
 element normal.normal {
-    background-color: var(normal-background);
+    // background-color: var(normal-background);
+    background-color: transparent;
     text-color:       var(normal-foreground);
 }
 element normal.urgent {
@@ -86,7 +90,8 @@ element selected.active {
     text-color:       var(selected-active-foreground);
 }
 element alternate.normal {
-    background-color: var(alternate-normal-background);
+    //background-color: var(blue-background-transparent);
+    background-color: transparent;
     text-color:       var(alternate-normal-foreground);
 }
 element alternate.urgent {
@@ -100,6 +105,11 @@ element alternate.active {
 element-text {
     background-color: inherit;
     text-color:       inherit;
+    padding: 4px 0px 0px 7px;
+}
+element-icon {
+    size: 1.25em;
+    padding: 1px;
 }
 scrollbar {
     width:        4px ;
