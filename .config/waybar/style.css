@@ -1,3 +1,25 @@
+/* --- Gruvbox Dark Palette --- */
+/* Based on https://github.com/morhetz/gruvbox */
+@define-color bg #282828;
+@define-color bg0_h #1d2021;
+@define-color bg0_s #32302f;
+@define-color bg1 #3c3836;
+@define-color bg2 #504945;
+
+@define-color fg #ebdbb2;
+@define-color fg1 #fbf1c7;
+@define-color gray #928374;
+
+@define-color red #fb4934;
+@define-color green #b8bb26;
+@define-color green2 #98971a;
+@define-color yellow #fabd2f;
+@define-color blue #83a598;
+@define-color purple #d3869b;
+@define-color aqua #8ec07c;
+@define-color orange #fe8019;
+/* --- End Palette --- */
+
 * {
     /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
     font-family: "JetBrainsMono Nerd Font", sans-serif;
@@ -6,8 +28,8 @@
 }
 
 window#waybar {
-    background: rgba(26, 27, 38, 0.0);
-    color: #c0caf5;
+    background: rgba(29, 32, 33, 0.0); /* bg0_h */
+    color: @fg;
     font-family: 
         SpaceMono Nerd Font,
         feather;
@@ -33,19 +55,19 @@ window#waybar {
 .modules-right,
 .tray
 {
-  background: rgba(0, 0, 8, .7);
+  background: rgba(50, 48, 47, .7); /* bg0_s */
 }
 
 .custom-spotify {
     padding: 0 10px;
     margin: 0 4px;
     border-radius: 15px;
-    background-color: #66ED84;
-    color: black;
+    background-color: @green2;
+    color: @bg;
 }
 
 #clock {
-  color: #2DFCF5;
+  color: @aqua;
 }
 
 
@@ -89,29 +111,27 @@ window#waybar {
 #power-profiles-daemon:hover,
 #language:hover,
 #mpd:hover {
-    background: rgba(26, 27, 38, 0.9);
+    background: rgba(60, 56, 54, 0.9); /* bg1 */
 }
 
 
 #workspaces button {
   background: transparent;
-  font-family:
-    SpaceMono Nerd Font,
-    feather;
   font-weight: 900;
   font-size: 13pt;
-  color: #c0caf5;
+  color: @fg;
   border:none;
   border-radius: 15px;
 }
 
 #workspaces button.active {
-    background: #13131d; 
+    background: @bg2; 
+    color: @fg1;
 }
 
 #workspaces button:hover {
-  background: #11111b;
-  color: #cdd6f4;
+  background: @bg1;
+  color: @fg1;
   box-shadow: none;
 }
 
@@ -122,12 +142,62 @@ window#waybar {
     transition: color .5s;
 }
 #custom-arch:hover {
-    color: #1793d1;
+    color: @blue;
 }
 
 
 #custom-weather {
-  background: rgba(0, 0, 8, .7);
+  background: rgba(50, 48, 47, .7); /* bg0_s */
   border-radius: 15px;
   padding: 0 10px;
+}
+#cpu {
+    color: @orange; /* fe8019 */
+}
+#memory {
+    color: @yellow; /* fabd2f */
+}
+#temperature {
+    color: @fg; /* Default: ebdbb2 */
+}
+#temperature.critical {
+    color: @red; /* fb4934 */
+}
+#battery {
+    color: @green; /* b8bb26 */
+}
+#battery.charging,
+#battery.plugged {
+    color: @green; /* b8bb26 */
+}
+#battery.warning {
+    color: @yellow; /* fabd2f */
+}
+#battery.critical {
+    color: @red; /* fb4934 */
+}
+
+#network {
+    color: @blue; /* 83a598 */
+}
+#network.disconnected {
+    color: @red; /* fb4934 */
+}
+
+#pulseaudio {
+    color: @aqua; /* 8ec07c */
+}
+#pulseaudio.muted {
+    color: @gray; /* 928374 */
+}
+
+#language {
+    color: @purple; /* d3869b */
+}
+
+#idle_inhibitor.activated {
+    color: @red; /* fb4934 */
+}
+#idle_inhibitor.deactivated {
+    color: @gray; /* 928374 */
 }

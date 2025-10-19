@@ -79,10 +79,10 @@ return {
       custom_highlights = {}, -- Overwrite highlights with your own
     },
   },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "material-deep-ocean",
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "material-deep-ocean",
+  --   },
+  -- },
 }
