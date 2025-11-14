@@ -53,9 +53,10 @@ window#waybar {
 
 .modules-left,
 .modules-right,
-.tray
+.tray,
+.custom-weather
 {
-  background: rgba(50, 48, 47, .7); /* bg0_s */
+  background: @bg0_h; /* bg0_s */
 }
 
 .custom-spotify {
@@ -147,7 +148,7 @@ window#waybar {
 
 
 #custom-weather {
-  background: rgba(50, 48, 47, .7); /* bg0_s */
+  background-color: @bg0_h;
   border-radius: 15px;
   padding: 0 10px;
 }

@@ -138,6 +138,7 @@ element-text {
 element-icon {
     size:    1.25em;
     padding: 1px;
+    background-color: transparent;
 }
 scrollbar {
     width:        4px ;

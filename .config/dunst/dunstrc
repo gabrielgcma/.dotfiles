@@ -492,3 +492,8 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
+[whatsapp]
+  appname = "Google Chrome"
+  body = "*web.whatsapp.com"
+  format = "<b>%a</b>"
