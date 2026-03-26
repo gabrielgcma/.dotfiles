@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = grub
+
+[Action]
+Description = Updating GRUB binary for the DRP (UEFI Fallback)...
+When = PostTransaction
+Exec = /usr/local/bin/drp-uefi.sh

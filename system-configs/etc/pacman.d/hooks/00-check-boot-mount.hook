@@ -1,0 +1,17 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+# Vamos focar nos pacotes que interagem diretamente com o /boot
+Target = linux*
+Target = mkinitcpio
+Target = grub
+Target = *-ucode
+Target = systemd
+
+[Action]
+Description = Verifying if /boot is mounted to prevent Kernel panic...
+When = PreTransaction
+Exec = /usr/local/bin/check-boot-mount.sh
+AbortOnFail
