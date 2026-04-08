@@ -2,16 +2,12 @@
 Operation = Install
 Operation = Upgrade
 Operation = Remove
-Type = Package
-# Vamos focar nos pacotes que interagem diretamente com o /boot
-Target = linux*
-Target = mkinitcpio
-Target = grub
-Target = *-ucode
-Target = systemd
+Type = Path
+Target = boot/*
+Target = usr/lib/modules/*/vmlinuz
 
 [Action]
-Description = Verifying if /boot is mounted to prevent Kernel panic...
+Description = Checking if /boot is mounted Read-Write...
 When = PreTransaction
 Exec = /usr/local/bin/check-boot-mount.sh
 AbortOnFail
