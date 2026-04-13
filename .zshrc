@@ -127,4 +127,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
 
+# Habilita scroll suave e suporte a touch/touchpad de alta precisão no Chrome/Electron
+export CHROME_EXECUTABLE_FLAGS="--enable-smooth-scrolling --touch-devices=14"
+
 . "$HOME/.cargo/env"
