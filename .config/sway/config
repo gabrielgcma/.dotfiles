@@ -1,0 +1,214 @@
+# Sway config file
+# Modificado para Gabriel (Gruvbox + Native Wayland)
+
+# Win (super) key as mod key
+set $mod Mod4
+
+# Font for window titles.
+font pango:JetBrains Mono 10
+
+# Start XDG autostart
+exec --no-startup-id dex --autostart --environment sway
+
+# ==========================================
+# GESTÃO DE ENERGIA E BLOQUEIO (Nativo do Wayland)
+# ==========================================
+exec swayidle -w \
+    timeout 600 'swaylock -f -c 1d2021' \
+    timeout 660 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 1d2021'
+
+# Atalho manual para bloquear
+bindsym $mod+Mod1+Escape exec swaylock -f -c 1d2021
+
+# ==========================================
+# INPUTS E HARDWARE
+# ==========================================
+input * {
+    xkb_layout "us"
+    xkb_variant "altgr-intl"
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
+
+# ==========================================
+# DISPLAYS E VISUAL
+# ==========================================
+# Wallpaper sólido usando swaybg (Gruvbox #3c3836)
+exec_always swaybg -o "*" -c "#3c3836" -m solid_color
+
+# A barra (Waybar substitui a Polybar)
+exec_always --no-startup-id pkill waybar; waybar
+
+# Applets de bandeja
+exec --no-startup-id nm-applet
+
+# ====
+# Bindsyms (Navegação Padrão)
+# ====
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+q kill
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# splits e layouts
+bindsym $mod+Control+h split h
+bindsym $mod+v split v
+bindsym $mod+Shift+f fullscreen toggle
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# Launchers
+bindsym $mod+Shift+e exec rofi -show emoji
+bindsym $mod+Shift+c exec rofi -show calc -no-show-match -no-sort
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+e exec pcmanfm
+
+# ====
+# Mídia, Volume e Brilho
+# ====
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp exec brightnessctl s 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPrev exec playerctl previous
+
+# ====
+# Screenshot
+# ====
+bindsym Print exec grim -g "$(slurp)" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+bindsym $mod+F12 exec grim -g "$(slurp)" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+
+# ====
+# Sessão Sway
+# ====
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+Escape exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+r mode "resize"
+
+# ====
+# Mouse dragging
+# ====
+floating_modifier $mod normal
+
+# ====
+# Workspaces
+# ====
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Move o workspace atual para o monitor na direção especificada
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+j move workspace to output down
+bindsym $mod+Mod1+k move workspace to output up
+bindsym $mod+Mod1+l move workspace to output right
+
+# ====
+# Resize Mode
+# ====
+mode "resize" {
+        bindsym j resize shrink width 10 px
+        bindsym k resize grow height 10 px
+        bindsym l resize shrink height 10 px
+        bindsym semicolon resize grow width 10 px
+
+        bindsym Left resize shrink width 10 px
+        bindsym Down resize grow height 10 px
+        bindsym Up resize shrink height 10 px
+        bindsym Right resize grow width 10 px
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+# ====
+# Theme (Gruvbox Dark)
+# ====
+set $bg       #1d2021
+set $red      #cc241d
+set $green    #98971a
+set $yellow   #d79921
+set $blue     #458588
+set $purple   #b16286
+set $aqua     #689d6a
+set $gray     #a89984
+set $darkgray #1d2021
+set $active_border   #a89984
+set $inactive_border #272727
+
+# Gaps
+gaps inner 5
+gaps outer 5
+
+# Removes window title bars and uses only borders
+default_border pixel 2
+default_floating_border pixel 2
+
+for_window [class=".*"] border pixel 2
+for_window [app_id=".*"] border pixel 2
+
+# Regras de janela flutuante
+for_window [class="calculator"] floating enable
+for_window [app_id="calculator"] floating enable
+for_window [class="satty"] floating enable
+for_window [app_id="satty"] floating enable
+
+# (Class)                 (Border)    (Background)    (Text)    (Split Indicator)
+client.focused           $active_border   $active_border   $bg       $yellow
+client.focused_inactive  $inactive_border $inactive_border $gray     $inactive_border
+client.unfocused         $inactive_border $inactive_border $gray     $inactive_border
+client.urgent            $red             $red             $bg       $red

@@ -1,9 +1,4 @@
 {
-  "custom/arch": {
-    "format": "󰣇",
-    "tooltip": true,
-    "tooltip-format": "btw"
-  },
   "custom/weather": {
     "format": "{}°",
     "tooltip": true,
@@ -18,7 +13,7 @@
     "exec-if": "pgrep spotify",
     "return-type": "json"
   },
-  "hyprland/workspaces": {
+  "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": false,
     "warp-on-scroll": false,

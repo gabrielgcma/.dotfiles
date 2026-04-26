@@ -111,7 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias waybar-reload="pkill waybar && hyprctl dispatch exec waybar"
+alias waybar-reload="killall -SIGUSR2 waybar || swaymsg exec waybar"
 alias gbp-vpn-up="sudo wg-quick up wg0"
 alias gbp-vpn-down="sudo wg-quick down wg0"
 

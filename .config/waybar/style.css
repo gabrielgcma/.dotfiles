@@ -123,9 +123,12 @@ window#waybar {
   color: @fg;
   border:none;
   border-radius: 15px;
+  padding: 0 10px;
+  margin: 0;
+  min-width: 0;
 }
 
-#workspaces button.active {
+#workspaces button.focused {
     background: @bg2; 
     color: @fg1;
 }
@@ -135,17 +138,6 @@ window#waybar {
   color: @fg1;
   box-shadow: none;
 }
-
-#custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 25px;
-    transition: color .5s;
-}
-#custom-arch:hover {
-    color: @blue;
-}
-
 
 #custom-weather {
   background-color: @bg0_h;
