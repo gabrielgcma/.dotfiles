@@ -40,7 +40,7 @@ window#waybar {
 .modules-center,
 .modules-right
 {
-    margin: 5px 10px;
+    margin: 0 10px; /* Zero top/bottom margin inside the bar */
     padding: 0 5px;
     border-radius: 15px;
 }
