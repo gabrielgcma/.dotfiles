@@ -38,8 +38,22 @@ input type:touchpad {
 # ==========================================
 # DISPLAYS E VISUAL
 # ==========================================
+# Monitor configuration
+output eDP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
+
 # Wallpaper sólido usando swaybg (Gruvbox #3c3836)
 exec_always swaybg -o "*" -c "#3c3836" -m solid_color
+
+# Floating Rules (Moved up)
+for_window [app_id="org.gnome.Calculator"] floating enable, move position center
+for_window [app_id="satty"] floating enable
+
+# Borders
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class=".*"] border pixel 2
+for_window [app_id=".*"] border pixel 2
 
 # A barra (Waybar substitui a Polybar)
 exec_always --no-startup-id pkill waybar; waybar
@@ -193,19 +207,6 @@ set $inactive_border #272727
 # Gaps
 gaps inner 5
 gaps outer 5
-
-# Removes window title bars and uses only borders
-default_border pixel 2
-default_floating_border pixel 2
-
-for_window [class=".*"] border pixel 2
-for_window [app_id=".*"] border pixel 2
-
-# Regras de janela flutuante
-for_window [class="calculator"] floating enable
-for_window [app_id="calculator"] floating enable
-for_window [class="satty"] floating enable
-for_window [app_id="satty"] floating enable
 
 # (Class)                 (Border)    (Background)    (Text)    (Split Indicator)
 client.focused           $active_border   $active_border   $bg       $yellow
