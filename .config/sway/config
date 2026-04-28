@@ -10,6 +10,26 @@ font pango:JetBrains Mono 10
 # Start XDG autostart
 exec --no-startup-id dex --autostart --environment sway
 
+# Theme and Dark Mode
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema color-scheme 'prefer-dark'
+    gsettings set $gnome-schema gtk-theme 'Gruvbox-Dark'
+}
+
+# Export environment variables for GTK apps
+exec {
+    dbus-update-activation-environment --systemd GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1
+    systemctl --user set-environment GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1
+    swaymsg "exec export GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1"
+}
+exec swaymsg import-environment GTK_THEME ADW_DISABLE_PORTAL
+
+# Gerenciamento nativo da barra pelo Sway
+bar {
+    swaybar_command waybar
+}
+
 # ==========================================
 # GESTÃO DE ENERGIA E BLOQUEIO (Nativo do Wayland)
 # ==========================================
@@ -54,9 +74,6 @@ default_border pixel 2
 default_floating_border pixel 2
 for_window [class=".*"] border pixel 2
 for_window [app_id=".*"] border pixel 2
-
-# A barra (Waybar substitui a Polybar)
-exec_always --no-startup-id pkill waybar; waybar
 
 # Applets de bandeja
 exec --no-startup-id nm-applet
