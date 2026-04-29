@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # Sincroniza as variáveis do Wayland com o D-Bus (Essencial para Portais, File Pickers e Screen Share)
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM="wayland;xcb" SDL_VIDEODRIVER=wayland CLUTTER_BACKEND=wayland _JAVA_AWT_WM_NONREPARENTING=1
 
 # Infraestrutura de Sistema (Segurança, Clipboard e Automação)
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

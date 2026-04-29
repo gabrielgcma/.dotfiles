@@ -17,7 +17,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
@@ -31,7 +31,7 @@
     # dynamic height from 0 to 300
     # height = (0, 300)
     # constant height of 300
-    height = 300
+    height = (0, 300)
     # NOTE: Dunst from version 1.11 and older don't support dynamic height
     #       and the given value is treated as the maximum height
 
@@ -291,7 +291,7 @@
 
     # Uncomment this if you want to let notifications appear under fullscreen
     # applications (default: overlay)
-    # layer = top
+    layer = top
 
     # Set this to true to use X11 output on Wayland.
     force_xwayland = false
@@ -343,13 +343,15 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#282828"
     foreground = "#928374"
+    highlight = "#83a598"
     timeout = 10
     # Icon for notifications with low urgency
     default_icon = dialog-information
 
 [urgency_normal]
     background = "#282828"
-    foreground = "#ebdbb2"
+    foreground = "#fbf1c7"
+    highlight = "#83a598"
     timeout = 10
     override_pause_level = 30
     # Icon for notifications with normal urgency
@@ -358,6 +360,7 @@
 [urgency_critical]
     background = "#282828"
     foreground = "#fb4934"
+    highlight = "#fabd2f"
     frame_color = "#fabd2f"
     timeout = 0
     override_pause_level = 60
