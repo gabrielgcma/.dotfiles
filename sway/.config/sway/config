@@ -4,6 +4,16 @@
 # Win (super) key as mod key
 set $mod Mod4
 
+# Sincroniza as variáveis do Wayland com o D-Bus (Essencial para Portais, File Pickers e Screen Share)
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# Infraestrutura de Sistema (Segurança, Clipboard e Automação)
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec wl-paste --watch cliphist store
+exec autotiling
+exec wlsunset -l -23.5 -L -46.6
+
 # Font for window titles.
 font pango:JetBrains Mono 10
 
@@ -19,11 +29,9 @@ exec_always {
 
 # Export environment variables for GTK apps
 exec {
-    dbus-update-activation-environment --systemd GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1
-    systemctl --user set-environment GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1
-    swaymsg "exec export GTK_THEME=Gruvbox-Dark ADW_DISABLE_PORTAL=1"
+    dbus-update-activation-environment --systemd GTK_THEME=Gruvbox-Dark
+    systemctl --user set-environment GTK_THEME=Gruvbox-Dark
 }
-exec swaymsg import-environment GTK_THEME ADW_DISABLE_PORTAL
 
 # Gerenciamento nativo da barra pelo Sway
 bar {
@@ -68,6 +76,10 @@ exec_always swaybg -o "*" -c "#3c3836" -m solid_color
 # Floating Rules (Moved up)
 for_window [app_id="org.gnome.Calculator"] floating enable, move position center
 for_window [app_id="satty"] floating enable
+for_window [app_id="slack"] floating enable
+for_window [class="zoom"] floating enable
+for_window [class="Microsoft Teams - Preview"] floating enable
+for_window [title="Screen Sharing"] floating enable
 
 # Borders
 default_border pixel 2
@@ -110,6 +122,7 @@ bindsym $mod+a focus parent
 # Launchers
 bindsym $mod+Shift+e exec rofi -show emoji
 bindsym $mod+Shift+c exec rofi -show calc -no-show-match -no-sort
+bindsym $mod+c exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+e exec pcmanfm
 

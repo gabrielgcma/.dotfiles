@@ -18,8 +18,8 @@
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio",
+    "backlight",
     "bluetooth",
-    // "network",
     "cpu",
     "memory",
     "temperature",

@@ -114,6 +114,29 @@ source $ZSH/oh-my-zsh.sh
 alias waybar-reload="killall -SIGUSR2 waybar || swaymsg exec waybar"
 alias gbp-vpn-up="sudo wg-quick up wg0"
 alias gbp-vpn-down="sudo wg-quick down wg0"
+alias lg="lazygit"
+
+# CLI Productivity
+eval "$(zoxide init zsh)"
+eval "$(direnv hook zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Advanced Aliases
+# Git
+alias gs='git status'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
+
+# Docker / Podman (compat)
+alias dco='docker-compose'
+alias dps='docker ps'
+alias di='docker images'
+
+# System Maintenance
+alias update='paru -Syu'
+alias sysclean='paru -Sc && paru -Rns $(paru -Qdtq)'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
