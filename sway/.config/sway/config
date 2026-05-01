@@ -75,7 +75,12 @@ exec_always swaybg -o "*" -c "#3c3836" -m solid_color
 
 # Floating Rules (Moved up)
 for_window [app_id="org.gnome.Calculator"] floating enable, move position center
-for_window [app_id="satty"] floating enable
+# for_window [app_id="satty"] floating enable
+for_window [app_id="com.gabm.satty"] {
+    floating enable
+    resize set width 1200 height 800
+    move position center
+}
 for_window [app_id="slack"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="Microsoft Teams - Preview"] floating enable
@@ -145,6 +150,8 @@ bindsym XF86AudioPrev exec playerctl previous
 # ====
 bindsym Print exec grim -g "$(slurp)" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
 bindsym $mod+F12 exec grim -g "$(slurp)" - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png
+# Print com delay (2s) apenas do monitor atualmente em foco
+bindsym $mod+Mod1+F12 exec sh -c 'sleep 2 && grim -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") - | satty --filename - --output-filename ~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png'
 
 # ====
 # Sessão Sway
