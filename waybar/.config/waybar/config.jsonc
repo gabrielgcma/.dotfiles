@@ -30,6 +30,6 @@
   ],
   //Modules configuration
   "include": [
-    "~/.config/waybar/modules.json"
+    "$HOME/.config/waybar/modules.json"
   ]
 }
