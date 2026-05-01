@@ -4,5 +4,7 @@
 
 ### look and feel
 
-`gruvbox-gtk-theme-git`
-`sway`
+```
+gruvbox-gtk-theme-git
+sway
+```
