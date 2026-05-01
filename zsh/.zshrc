@@ -155,3 +155,5 @@ eval "$(pyenv init - bash)"
 export CHROME_EXECUTABLE_FLAGS="--enable-smooth-scrolling --touch-devices=14"
 
 . "$HOME/.cargo/env"
+
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
