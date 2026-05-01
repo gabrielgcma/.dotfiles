@@ -149,7 +149,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+eval "$(pyenv init -)"
 
 # Habilita scroll suave e suporte a touch/touchpad de alta precisão no Chrome/Electron
 export CHROME_EXECUTABLE_FLAGS="--enable-smooth-scrolling --touch-devices=14"

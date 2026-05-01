@@ -71,7 +71,7 @@ Once you've moved your custom Work settings into `.local` or `include` files:
 
     ```bash
     cd ~/.dotfiles
-    stow *
+    stow */
     ```
 
 3. **Restore** your local overrides if needed, and reload!

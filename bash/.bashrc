@@ -41,3 +41,5 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init - bash)"
 
 . "$HOME/.cargo/env"
+
+[[ -f ~/.bashrc.local ]] && source ~/.bashrc.local

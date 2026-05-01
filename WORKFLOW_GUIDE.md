@@ -39,8 +39,12 @@ Makes your config modular and easy to move to your work PC.
 
   ```bash
   cd ~/.dotfiles
-  stow *
+  # Use */ to stow only directories (packages)
+  stow */
   ```
+
+  *Note: If you want to exclude specific directories like `system-configs` (which is handled by `deploy-sys.sh`), you can use:*
+  `stow --ignore=system-configs */`
 
 ---
 
