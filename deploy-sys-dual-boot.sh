@@ -1,5 +1,6 @@
 #!/bin/bash
 # Deploy pipeline for system configs (root)
+# (only when dual booting)
 
 DOTFILES_SYS="$HOME/.dotfiles/system-configs"
 
