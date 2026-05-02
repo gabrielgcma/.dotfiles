@@ -115,12 +115,11 @@ alias waybar-reload="killall -SIGUSR2 waybar || swaymsg exec waybar"
 alias gbp-vpn-up="sudo wg-quick up wg0"
 alias gbp-vpn-down="sudo wg-quick down wg0"
 alias lg="lazygit"
-
 # CLI Productivity
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 # Advanced Aliases
 # Git
 alias gs='git status'
@@ -156,4 +155,6 @@ export CHROME_EXECUTABLE_FLAGS="--enable-smooth-scrolling --touch-devices=14"
 
 . "$HOME/.cargo/env"
 
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
