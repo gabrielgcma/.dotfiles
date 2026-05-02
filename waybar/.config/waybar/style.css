@@ -42,7 +42,7 @@ window#waybar {
 {
     margin: 0 10px; /* Zero top/bottom margin inside the bar */
     padding: 0 5px;
-    border-radius: 15px;
+    border-radius: 0;
 }
 .modules-left {
     padding: 0;
@@ -62,7 +62,7 @@ window#waybar {
 .custom-spotify {
     padding: 0 10px;
     margin: 0 4px;
-    border-radius: 15px;
+    border-radius: 0;
     background-color: @green2;
     color: @bg;
 }
@@ -91,7 +91,7 @@ window#waybar {
 #language,
 #mpd {
     padding: 0 10px;
-    border-radius: 15px;
+    border-radius: 0;
 }
 
 #clock:hover,
@@ -122,15 +122,15 @@ window#waybar {
   font-size: 13pt;
   color: @fg;
   border:none;
-  border-radius: 15px;
+  border-radius: 0;
   padding: 0 10px;
   margin: 0;
   min-width: 0;
 }
 
 #workspaces button.focused {
-    background: @bg2; 
-    color: @fg1;
+    background: @gray; 
+    color: @bg;
 }
 
 #workspaces button:hover {
@@ -141,7 +141,7 @@ window#waybar {
 
 #custom-weather {
   background-color: @bg0_h;
-  border-radius: 15px;
+  border-radius: 0;
   padding: 0 10px;
 }
 #cpu {
