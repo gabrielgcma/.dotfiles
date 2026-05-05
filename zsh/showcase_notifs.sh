@@ -21,5 +21,18 @@ sleep 0.8
 
 # 4. Long Body Text
 notify-send "Engineering Workflow" "Your environment is now optimized with GNU Stow, direnv, and automated venv activation. Everything is synced and ready for portability."
+sleep 0.8
+
+# 5. Teams Simulation (Testing the new rules)
+echo "Testing Teams (Desktop)..."
+notify-send -a "Microsoft Teams" "Teams Desktop" "Should be normal urgency (Cream)."
+sleep 0.8
+
+echo "Testing teams (Linux app)..."
+notify-send -a "teams" "Teams Linux" "Should be normal urgency (Cream)."
+sleep 0.8
+
+echo "Testing Teams (Web)..."
+notify-send -a "Google Chrome" "New Message in Teams" "Should be normal urgency (Cream)."
 
 echo "Done!"

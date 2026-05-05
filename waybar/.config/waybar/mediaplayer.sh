@@ -53,6 +53,16 @@ class PlayerManager:
         self.loop.run()
 
     def init_player(self, player):
+        if player.props.player_name == "spotify":
+            config_dir = os.path.dirname(os.path.realpath(__file__))
+            if os.path.exists(os.path.join(config_dir, "no-spotify")):
+                if self.selected_player == "spotify":
+                    logger.info("no-spotify file found and spotify is selected, exiting")
+                    sys.exit(0)
+                else:
+                    logger.info("no-spotify file found, skipping spotify")
+                    return
+
         logger.info(f"Initialize new player: {player.name}")
         player = Playerctl.Player.new_from_name(player)
         player.connect("playback-status",
@@ -109,6 +119,16 @@ class PlayerManager:
             self.clear_output()
 
     def on_metadata_changed(self, player, metadata, _=None):
+        if player.props.player_name == "spotify":
+            config_dir = os.path.dirname(os.path.realpath(__file__))
+            if os.path.exists(os.path.join(config_dir, "no-spotify")):
+                if self.selected_player == "spotify":
+                    logger.info("no-spotify file found and spotify is selected, exiting")
+                    sys.exit(0)
+                else:
+                    logger.info("no-spotify file found, skipping spotify")
+                    return
+
         logger.debug(f"Metadata changed for player {player.props.player_name}")
         player_name = player.props.player_name
         artist = player.get_artist()
@@ -180,6 +200,12 @@ def main():
     # Logging is set by default to WARN and higher.
     # With every occurrence of -v it's lowered by one
     logger.setLevel(max((3 - arguments.verbose) * 10, 0))
+
+    if arguments.player == "spotify":
+        config_dir = os.path.dirname(os.path.realpath(__file__))
+        if os.path.exists(os.path.join(config_dir, "no-spotify")):
+            logger.info("no-spotify file found, exiting")
+            sys.exit(0)
 
     logger.info("Creating player manager")
     if arguments.player:
