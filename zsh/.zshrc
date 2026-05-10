@@ -158,3 +158,4 @@ export CHROME_EXECUTABLE_FLAGS="--enable-smooth-scrolling --touch-devices=14"
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
+export PATH="$HOME/.local/bin:$PATH"
