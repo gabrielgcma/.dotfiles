@@ -44,6 +44,7 @@ bar {
 exec swayidle -w \
     timeout 600 'hyprlock' \
     timeout 660 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    timeout 1800 'systemctl suspend' \
     before-sleep 'hyprlock'
 
 # Atalho manual para bloquear
