@@ -1,0 +1,26 @@
+screenshots
+clock
+timestr=%H:%M
+datestr=
+effect-blur=7x5
+font=JetBrains Mono
+font-size=64
+indicator
+indicator-radius=120
+indicator-thickness=8
+
+# Gruvbox dark
+color=1d2021ff
+inside-color=28282899
+ring-color=a89984ff
+key-hl-color=d79921ff
+bs-hl-color=cc241dff
+ring-ver-color=458588ff
+inside-ver-color=45858850
+ring-wrong-color=fb4934ff
+inside-wrong-color=cc241d50
+text-color=ebdbb2ff
+text-ver-color=ebdbb2ff
+text-wrong-color=fb4934ff
+line-uses-ring
+separator-color=00000000

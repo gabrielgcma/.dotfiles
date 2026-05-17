@@ -42,13 +42,13 @@ bar {
 # GESTÃO DE ENERGIA E BLOQUEIO (Nativo do Wayland)
 # ==========================================
 exec swayidle -w \
-    timeout 600 'hyprlock' \
-    timeout 660 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    timeout 300 'pidof swaylock || swaylock' \
+    timeout 330 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
     timeout 1800 'systemctl suspend' \
-    before-sleep 'hyprlock'
+    before-sleep 'pidof swaylock || swaylock'
 
 # Atalho manual para bloquear
-bindsym $mod+Mod1+Escape exec swaylock -f -c 1d2021
+bindsym $mod+Mod1+Escape exec swaylock
 
 # ==========================================
 # INPUTS E HARDWARE
