@@ -501,15 +501,8 @@
   body = "*web.whatsapp.com"
   format = "<b>%a</b>"
 
-[teams]
-    appname = Microsoft Teams*
-    urgency = normal
-
-[teams_linux]
-    appname = teams
-    urgency = normal
 
 [teams_web]
-    appname = Google Chrome
-    summary = *Teams*
-    urgency = normal
+  appname = "Google Chrome"
+  body = "*teams.microsoft.com*"
+  urgency = normal
